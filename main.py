@@ -1,20 +1,20 @@
 from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5 import uic
 from PyQt5.QtGui import QPainter, QColor
 from random import randint
 import sys
+from UI import Ui_Form
 
 
-class Main(QWidget):
+class Main(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
         self.btn.clicked.connect(self.update)
 
     def paintEvent(self, event):
        painter = QPainter()
        painter.begin(self)
-       painter.setBrush(QColor('yellow'))
+       painter.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
        x = randint(40, 533)
        y = randint(40, 366)
        r = randint(1, 40)
